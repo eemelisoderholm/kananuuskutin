@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Kananuuskutin",
+  "version": "1.0",
+  "description": "Embed extra Kanaliiga CS:GO player data to Toornament match players page",
+  "content_scripts": [
+      {
+        "js": ["dist/inject.js"],
+        "css": ["dist/style.css"],
+        "matches": [
+          "https://play.toornament.com/*/tournaments/*/matches/*/players"
+        ]
+      }
+    ],
+  "background": {
+    "service_worker": "dist/worker.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; connect-src https://* data: blob: filesystem:;"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "storage"
+  ]
+}

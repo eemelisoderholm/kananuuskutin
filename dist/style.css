@@ -1,0 +1,126 @@
+.nuusk-player {
+  min-height: 165px;
+}
+
+.nuusk-player-header {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.nuusk-player-header-left {
+  flex: 0 0 auto;
+}
+
+.nuusk-player-avatar {
+  flex: 0 0 auto;
+  display: block;
+}
+
+.nuusk-player-header-right {
+  flex: 1 1 auto;
+  padding: 0 5px;
+}
+
+.nuusk-player-header-name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nuusk-player-header-team {
+  font-size: 12px;
+}
+
+.nuusk-player-header-team-name {
+  display: inline-block;
+}
+
+.nuusk-player-header-team-company {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.nuusk-player-rank-images {
+  display: flex;
+}
+
+.nuusk-player-rank-images img {
+  flex: 0 0 auto;
+  display: block;
+  margin: 0 2px 0 0;
+  padding: 0;
+}
+
+.nuusk-player-source-card {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.nuusk-player-source-card-title {
+  flex: 0 0 auto;
+  display: block;
+  width: 60px;
+  line-height: 30px;
+  background: #DDD;
+  text-align: center;
+  min-height: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: 5px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.nuusk-player-source-leetify .nuusk-player-source-card-title {
+  background-color: #F84982;
+  color: #FFF;
+}
+
+.nuusk-player-source-steam .nuusk-player-source-card-title {
+  background-color: #1C3352;
+  color: #FFF;
+}
+
+.nuusk-player-source-ebinstats .nuusk-player-source-card-title {
+  background-color: #FD7E14;
+  color: #FFF;
+}
+
+.nuusk-player-source-card-container {
+  display: flex;
+}
+
+.nuusk-player-source-card-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.nuusk-chip {
+  display: flex;
+  flex: 0 0 auto;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #DDD;
+  margin-right: 1px;
+}
+
+.nuusk-chip-label {
+  flex: 0 0 auto;
+  height: 20px;
+  padding-right: 3px;
+  text-transform: uppercase;
+}
+
+.nuusk-chip-value {
+  flex: 0 0 auto;
+  height: 20px;
+  overflow: hidden;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-weight: bold;
+}

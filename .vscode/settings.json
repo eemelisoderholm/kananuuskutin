@@ -1,0 +1,8 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.format.semicolons": "remove",
+  "typescript.format.enable": true,
+  "files.eol": "\n"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "kananuuskutin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Chrome extension for adding extra player data to Toornament match page",
+  "main": "",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w"
+  },
+  "author": "Eemeli Söderholm <eemeli.s@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/chrome": "^0.0.210",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.32.0",
+    "rollup": "^3.11.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "typescript": "^4.9.4"
+  }
+}
