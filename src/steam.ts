@@ -19,7 +19,7 @@ export async function fetchPlayerSteamData(steamId: string): Promise<PlayerSteam
     return {
       updatedAt: new Date().toISOString(),
       hours: parseIntFinite(xml.match(hoursRegex)?.[1]?.replaceAll(',', '')) ?? 0,
-      avatar: xml.match(/https:\/\/avatars\.akamai\.steamstatic.com\/\w+_full\.jpg/)?.[0] ?? '',
+      avatar: xml.match(/https:\/\/avatar.*_full\.jpg/)?.[0] ?? '',
       memberSince: xml.match(/<memberSince>([\w,\s\d]+)<\/memberSince>/)?.[1] ?? '',
     }
   } catch (err) {
