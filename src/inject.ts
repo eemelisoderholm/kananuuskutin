@@ -59,7 +59,8 @@ function createSourceCards(playerData: PlayerData) {
     createSourceCard({
       id: 'ebinstats',
       content: createEbinstatsContent(playerData),
-      url: `https://ebinstats.kanaliiga.fi/?s=playerstats&steamID=${steamId}`
+      url: `https://ebinstats.kanaliiga.fi/?s=playerstats&steamID=${steamId}`,
+      skip: !playerData.sources.ebinstats,
     }),
     createSourceCard({
       id: 'leetify',
