@@ -124,3 +124,58 @@
   padding-right: 3px;
   font-weight: bold;
 }
+
+.nuusk-player-mmr {
+  position: relative;
+}
+
+.nuusk-player-mmr-value {
+  position: absolute;
+  left: 11px;
+  top: 0;
+  font-weight: bold;
+}
+
+.nuusk-player-mmr-value-thousands {
+  font-size: 13px;
+  white-space: pre;
+}
+
+.nuusk-player-mmr-value-hundreds {
+  font-size: 9px;
+}
+
+.nuusk-cs-rating-tier-0 {
+  color: #b0c3d9;
+  text-shadow: 1px 1px #2d435d
+}
+
+.nuusk-cs-rating-tier-1 {
+  color: #8cc6ff;
+  text-shadow: 1px 1px #00478c
+}
+
+.nuusk-cs-rating-tier-2 {
+  color: #6a7dff;
+  text-shadow: 1px 1px #000e6a
+}
+
+.nuusk-cs-rating-tier-3 {
+  color: #c166ff;
+  text-shadow: 1px 1px #3d0066
+}
+
+.nuusk-cs-rating-tier-4 {
+  color: #f03cff;
+  text-shadow: 1px 1px #37003c
+}
+
+.nuusk-cs-rating-tier-5 {
+  color: #eb4b4b;
+  text-shadow: 1px 1px #320606
+}
+
+.nuusk-cs-rating-tier-6 {
+  color: gold;
+  text-shadow: 1px 1px #000
+}

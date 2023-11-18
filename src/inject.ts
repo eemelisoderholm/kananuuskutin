@@ -88,16 +88,16 @@ function createLeetifyContent(playerData: PlayerData) {
     (ranks.matchmaking.current || ranks.faceit.current) &&
       createChip(createEl('div', 'player-rank-images', [
         ranks.matchmaking.current &&
-          createRankImage('matchmaking', ranks.matchmaking.current),
+          createRankElement('matchmaking', ranks.matchmaking.current),
         ranks.faceit.current &&
-          createRankImage('faceit', ranks.faceit.current)
+          createRankElement('faceit', ranks.faceit.current)
       ]), { title: 'Current rank according to leetify, based on last ~30 matches' }),
     (highestMMRankRelevant || highestFIRankRelevant) &&
       createChip(createEl('div', 'player-rank-images', [
         ranks.matchmaking.highest &&
-          createRankImage('matchmaking', ranks.matchmaking.highest),
+          createRankElement('matchmaking', ranks.matchmaking.highest),
         ranks.faceit.highest &&
-          createRankImage('faceit', ranks.faceit.highest)
+          createRankElement('faceit', ranks.faceit.highest)
       ]), { label: 'Best', title: 'Highest rank according to leetify, based on last ~30 matches' }),
     ratings?.leetify &&
       // Leetify seems to report leetify rating multiplied by 100
@@ -123,7 +123,7 @@ function createEbinstatsContent({ sources }: PlayerData) {
   if (!sources.ebinstats) return document.createElement('div')
   const { adr, kpr, kdr, kanarating, hours, rank } = sources.ebinstats
   return createEl('div', 'player-ebinstats-content', [
-    rank && createChip(createRankImage('matchmaking', rank), { title: 'Matchmaking rank reported during season sign-up' }),
+    rank && createChip(createRankElement('matchmaking', rank), { title: 'Matchmaking rank reported during season sign-up' }),
     adr && createChip(adr.toString(), { label: 'ADR', title: 'Average Damage per Round' }),
     kpr && createChip(kpr.toFixed(2), { label: 'KPR', title: 'Average Kills Per Round' }),
     kdr && createChip(kdr.toFixed(2) , { label: 'KDR', title: 'Total Kill/Death Ratio'}),
@@ -162,6 +162,47 @@ function createPlayerAvatar({ sources }: PlayerData) {
 }
 
 type RankSystem = 'faceit' | 'matchmaking'
+
+function getTierFromMMR(rating: number): number {
+  if (rating < 5000) return 0 // Gray
+  if (rating < 10000) return 1 // Light blue
+  if (rating < 15000) return 2 // Dark blue
+  if (rating < 20000) return 3 // Dark purple
+  if (rating < 25000) return 4 // Pink
+  if (rating < 30000) return 5 // Red
+  return 6 // Gold
+}
+
+function createRankElement(system: RankSystem, rank: number) {
+  // Images are only used for preset ranks (i.e. Gold Nova, FACEIT 5),
+  // while the Premier MMR (i.e. 15,320) is rendered with dynamic text.
+  // Values over 18 (classic Global Elite) are considered Premier MMR.
+  const isMMR = system === 'matchmaking' && rank > 18
+  return isMMR ? createMMRElement(rank) : createRankImage(system, rank)
+}
+
+function createMMRElement(rating: number) {
+  // Leetify has background image SVGs for each tier (0-6)
+  const tier = getTierFromMMR(rating)
+  const img = new Image()
+  img.width = 50
+  img.height = 20
+  img.classList.add(cls(`player-mmr-image`))
+  img.src = `https://beta.leetify.com/assets/images/rank-icons/cs_rating_${tier}.svg`
+
+  // The rank visual has bigger label for thousands,
+  // so we separate the rating into two values for rendering
+  const thousands = Math.floor(rating / 1000).toString()
+  const hundreds = rating.toString().substring(rating.toString().length - 3)
+
+  return createEl('div', 'player-mmr', [
+    img,
+    createEl('div', ['player-mmr-value', `cs-rating-tier-${tier}`], [
+      createEl('span', 'player-mmr-value-thousands', `${thousands.padStart(2, ' ')},`),
+      createEl('span', 'player-mmr-value-hundreds', hundreds)
+    ])
+  ])
+}
 
 function createRankImage(system: RankSystem, rank: number) {
   const img = new Image()
